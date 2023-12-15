@@ -1,14 +1,19 @@
+/* Add this to your styles.css */
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    background-color: #f4f4f4;
 }
 
 header, nav, section, footer {
     margin: 20px;
     padding: 20px;
     border: 1px solid #ddd;
+    background-color: #fff;
+    border-radius: 8px;
 }
 
 nav ul {
@@ -30,7 +35,7 @@ table {
 
 th, td {
     border: 1px solid #ddd;
-    padding: 8px;
+    padding: 12px;
     text-align: left;
 }
 
@@ -38,22 +43,53 @@ form {
     margin-top: 10px;
 }
 
+button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
 footer {
     margin-top: 20px;
     text-align: center;
     background-color: #f2f2f2;
+    padding: 10px;
+    border-radius: 8px;
 }
-/* Add this to your styles.css */
+
+/* Styles for the menu dropdown */
+#menu-button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
 #menu-dropdown {
     display: none;
     position: absolute;
-    background-color: #f9f9f9;
+    background-color: #fff;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     list-style-type: none;
-    padding: 0;
+    padding: 10px;
     margin: 0;
+    border-radius: 4px;
 }
 
 #menu-dropdown.show {
     display: block;
+}
+
+#menu-dropdown li {
+    margin-bottom: 8px;
 }
