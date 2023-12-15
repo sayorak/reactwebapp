@@ -1,50 +1,43 @@
 document.addEventListener('DOMContentLoaded', function () {
     console.log('Page loaded');
 
-    // Sample data for array methods
-    const sportsEvents = [
-        { date: '2023-01-01', event: 'Football Match', location: 'Stadium A' },
-        { date: '2023-02-15', event: 'Basketball Game', location: 'Stadium B' },
-        { date: '2023-03-10', event: 'Tennis Tournament', location: 'Stadium C' }
-    ];
+    // Event listener for the subscribe button
+    const subscribeButton = document.querySelector('button[type="submit"]');
+    subscribeButton.addEventListener('click', function (event) {
+        event.preventDefault();
+        const emailInput = document.getElementById('email');
+        const subscribeCheckbox = document.getElementById('subscribe');
 
-    // forEach method
-    sportsEvents.forEach(event => {
-        console.log(`Event: ${event.event}, Location: ${event.location}`);
+        alert(`Subscribed: ${emailInput.value}, ${subscribeCheckbox.checked ? 'Yes' : 'No'}`);
     });
 
-    // map method
-    const eventNames = sportsEvents.map(event => event.event);
-    console.log(`Event Names: ${eventNames.join(', ')}`);
-
-    // filter method
-    const upcomingEvents = sportsEvents.filter(event => new Date(event.date) > new Date());
-    console.log('Upcoming Events:', upcomingEvents);
-
-    // reduce method
-    const totalEvents = sportsEvents.reduce((total, event) => total + 1, 0);
-    console.log(`Total Events: ${totalEvents}`);
-
-    // Spread operator with array literals
-    const additionalEvents = [
-        { date: '2023-04-05', event: 'Golf Tournament', location: 'Golf Course' },
-        { date: '2023-05-20', event: 'Running Marathon', location: 'City Streets' }
-    ];
-
-    const combinedEvents = [...sportsEvents, ...additionalEvents];
-    console.log('Combined Events:', combinedEvents);
-
-    // Spread with objects
-    const newEvent = { date: '2023-06-15', event: 'Swimming Competition', location: 'Indoor Pool' };
-    const updatedEvents = [...sportsEvents, newEvent];
-    console.log('Updated Events:', updatedEvents);
-
-    // Rest params
-    function logEvents(...events) {
-        events.forEach(event => {
-            console.log(`Logged Event: ${event.event}`);
+    // Event listener for the sports events table rows
+    const tableRows = document.querySelectorAll('table tbody tr');
+    tableRows.forEach(row => {
+        row.addEventListener('click', function () {
+            alert(`Clicked on event: ${row.children[1].textContent}`);
         });
-    }
+    });
 
-    logEvents(...sportsEvents);
+    // Keyboard event listener for the whole document
+    document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') {
+            alert('Escape key pressed!');
+        }
+    });
+
+    // Event listener for menu dropdown
+    const menuButton = document.getElementById('menu-button');
+    const menuDropdown = document.getElementById('menu-dropdown');
+
+    menuButton.addEventListener('click', function () {
+        menuDropdown.classList.toggle('show');
+    });
+
+    // Keyboard event listener for menu dropdown
+    document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') {
+            menuDropdown.classList.remove('show');
+        }
+    });
 });
