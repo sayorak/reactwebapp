@@ -1,42 +1,35 @@
 document.addEventListener('DOMContentLoaded', function () {
     console.log('Page loaded');
 
-    // Event listener for the subscribe button
-    const subscribeButton = document.querySelector('button[type="submit"]');
-    subscribeButton.addEventListener('click', function (event) {
-        event.preventDefault();
-        const emailInput = document.getElementById('email');
-        const subscribeCheckbox = document.getElementById('subscribe');
+    // ... (previous code)
 
-        alert(`Subscribed: ${emailInput.value}, ${subscribeCheckbox.checked ? 'Yes' : 'No'}`);
+    // Mouseover and mouseout event listeners for the menu dropdown
+    menuButton.addEventListener('mouseover', function () {
+        menuDropdown.classList.add('show');
     });
 
-    // Event listener for the sports events table rows
-    const tableRows = document.querySelectorAll('table tbody tr');
-    tableRows.forEach(row => {
-        row.addEventListener('click', function () {
-            alert(`Clicked on event: ${row.children[1].textContent}`);
-        });
-    });
-
-    // Keyboard event listener for the whole document
-    document.addEventListener('keydown', function (event) {
-        if (event.key === 'Escape') {
-            alert('Escape key pressed!');
+    menuDropdown.addEventListener('mouseout', function (event) {
+        // Check if the mouse is not over the menu button or the dropdown
+        if (!event.relatedTarget || (event.relatedTarget !== menuButton && !menuButton.contains(event.relatedTarget) && !menuDropdown.contains(event.relatedTarget))) {
+            menuDropdown.classList.remove('show');
         }
     });
 
-    // Event listener for menu dropdown
-    const menuButton = document.getElementById('menu-button');
-    const menuDropdown = document.getElementById('menu-dropdown');
+    // Additional mouse events for table rows
+    tableRows.forEach(row => {
+        row.addEventListener('mouseover', function () {
+            row.style.backgroundColor = '#e6f7ff';
+        });
 
-    menuButton.addEventListener('click', function () {
-        menuDropdown.classList.toggle('show');
+        row.addEventListener('mouseout', function () {
+            row.style.backgroundColor = '';
+        });
     });
 
-    // Keyboard event listener for menu dropdown
-    document.addEventListener('keydown', function (event) {
-        if (event.key === 'Escape') {
+    // Click event listener for the entire document
+    document.addEventListener('click', function (event) {
+        // Check if the click is outside the menu dropdown
+        if (!menuDropdown.contains(event.target) && !menuButton.contains(event.target)) {
             menuDropdown.classList.remove('show');
         }
     });
